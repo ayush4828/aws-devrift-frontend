@@ -1,0 +1,56 @@
+.not-found-glitch-text {
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+              -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+              0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  animation: not-found-glitch 500ms infinite;
+}
+
+@keyframes not-found-glitch {
+  0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+  49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+  50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+  99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+  100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
+}
+
+.not-found-rift-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 219, 233, 0.5) 45%, transparent 45.5%, transparent 54.5%, rgba(0, 219, 233, 0.5) 55%, transparent);
+  position: relative;
+}
+.not-found-rift-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 2px;
+  background: #00dbe9;
+  box-shadow: 0 0 10px #00dbe9;
+}
+
+.not-found-bg-grid {
+  background-image: 
+      linear-gradient(rgba(0, 219, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 219, 233, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.not-found-floating-code {
+  animation: not-found-float-code 20s linear infinite;
+  opacity: 0.15;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@keyframes not-found-float-code {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100vh); }
+}
+
+.not-found-rift-portal-glow {
+  filter: drop-shadow(0 0 30px rgba(0, 219, 233, 0.4)) drop-shadow(0 0 60px rgba(182, 0, 248, 0.2));
+}

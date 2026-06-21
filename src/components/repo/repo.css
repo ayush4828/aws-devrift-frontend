@@ -1,0 +1,361 @@
+/* ============================================
+   Repository Page — repo.css
+   ============================================ */
+
+.repo-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ---- Header ---- */
+.repo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 32px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.repo-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.repo-breadcrumb a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.repo-breadcrumb a:hover { text-decoration: underline; }
+
+.repo-breadcrumb .sep { color: var(--text); opacity: 0.5; }
+
+.repo-visibility-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.repo-description {
+  padding: 12px 32px 0;
+  color: var(--text);
+  font-size: 15px;
+}
+
+/* ---- Tabs ---- */
+.repo-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.repo-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.repo-tab:hover { color: var(--text-h); }
+.repo-tab.active {
+  color: var(--text-h);
+  border-bottom-color: var(--accent);
+}
+
+.repo-tab .tab-count {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---- Body ---- */
+.repo-body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  padding: 24px 32px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .repo-body { grid-template-columns: 1fr; }
+}
+
+/* ---- Commits Section ---- */
+.commits-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.commits-list {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.commit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.commit-item:last-child { border-bottom: none; }
+.commit-item:hover { background: var(--accent-bg); }
+
+.commit-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.commit-message {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commit-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.commit-id {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 6px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.commit-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.commit-files-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--code-bg);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.commit-time {
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ---- Live Badge ---- */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 0.5px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* ---- Sidebar ---- */
+.repo-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidebar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.sidebar-card-body {
+  padding: 12px 16px;
+}
+
+/* Files list in sidebar */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--text);
+  cursor: default;
+  transition: background 0.1s;
+}
+.file-item:hover { background: var(--code-bg); color: var(--text-h); }
+
+.file-icon { opacity: 0.6; font-size: 14px; }
+
+/* Repo stats */
+.repo-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.repo-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text);
+  align-items: center;
+}
+
+.repo-stat strong {
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+/* ---- Empty / Loading ---- */
+.empty-commits {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.empty-commits h4 {
+  color: var(--text-h);
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.empty-commits p {
+  font-size: 14px;
+  font-family: var(--mono);
+  background: var(--code-bg);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.loading-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-row {
+  height: 56px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--code-bg) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  border-radius: 8px;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---- Expanded commit detail ---- */
+.commit-detail {
+  background: var(--code-bg);
+  border-top: 1px solid var(--border);
+  padding: 12px 16px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.commit-detail-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.commit-detail-file {
+  font-size: 12px;
+  font-family: var(--mono);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  color: var(--text-h);
+}
