@@ -72,7 +72,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchFeed = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/repo/all`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/repo/all`);
         const repos = await response.json();
         
         const currentUserId = localStorage.getItem("userId");

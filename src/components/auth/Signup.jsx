@@ -15,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/signup", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/signup`, {
         email: email,
         password: password,
         username: username,
@@ -108,7 +108,7 @@ const Signup = () => {
       <div className="grid grid-cols-2 gap-md">
         <button 
           type="button"
-          onClick={() => window.location.href = "http://localhost:3000/auth/github"}
+          onClick={() => window.location.href = `${import.meta.env.VITE_API_URL}/auth/github`}
           className="flex items-center justify-center gap-sm py-md rounded-lg border border-outline-variant/30 hover:bg-surface-variant/20 transition-all active:scale-[0.98]"
         >
           <i className="fa-brands fa-github text-xl"></i>
@@ -116,7 +116,7 @@ const Signup = () => {
         </button>
         <button 
           type="button"
-          onClick={() => window.location.href = "http://localhost:3000/auth/google"}
+          onClick={() => window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`}
           className="flex items-center justify-center gap-sm py-md rounded-lg border border-outline-variant/30 hover:bg-surface-variant/20 transition-all active:scale-[0.98]"
         >
           <i className="fa-brands fa-google text-xl text-[#EA4335]"></i>

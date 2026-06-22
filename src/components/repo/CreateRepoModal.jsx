@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const SERVER = "http://localhost:3000";
+const SERVER = import.meta.env.VITE_API_URL;
 
 const CreateRepoModal = ({ onClose, onCreated }) => {
   const [name,        setName]        = useState("");

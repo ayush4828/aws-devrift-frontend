@@ -8,7 +8,7 @@ const TopHeader = ({ searchQuery, setSearchQuery, showSearch = true, onMenuClick
 
   useEffect(() => {
     if (userId) {
-      fetch(`http://localhost:3000/userprofile/${userId}`)
+      fetch(`${import.meta.env.VITE_API_URL}/userprofile/${userId}`)
         .then(res => res.json())
         .then(data => setUserProfile(data))
     }

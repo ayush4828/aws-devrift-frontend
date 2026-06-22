@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "../layout/Layout";
 import MarkdownRenderer from "./MarkdownRenderer";
 
-const SERVER = "http://localhost:3000";
+const SERVER = import.meta.env.VITE_API_URL;
 
 const ResumePage = () => {
   const [resume,   setResume]   = useState(null);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../layout/Layout";
 
-const SERVER = "http://localhost:3000";
+const SERVER = import.meta.env.VITE_API_URL;
 
 const ExploreUsers = () => {
   const [users, setUsers] = useState([]);

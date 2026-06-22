@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-const SERVER = "http://localhost:3000";
+const SERVER = import.meta.env.VITE_API_URL;
 
 function fileIcon(filename = "") {
   const ext = filename.split(".").pop().toLowerCase();

@@ -32,7 +32,7 @@ const VerifyEmail = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/verify-email", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/verify-email`, {
         email: email,
         code: code,
       });
@@ -53,7 +53,7 @@ const VerifyEmail = () => {
   const handleResend = async () => {
     try {
       setResending(true);
-      const res = await axios.post("http://localhost:3000/resend-verification", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/resend-verification`, {
         email: email,
       });
       toast.success(res.data.message || "Verification code resent!");

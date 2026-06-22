@@ -8,7 +8,7 @@ import NotFound from "../layout/NotFound";
 import ConfirmModal from "../layout/ConfirmModal";
 import toast from 'react-hot-toast';
 
-const SERVER = "http://localhost:3000";
+const SERVER = import.meta.env.VITE_API_URL;
 
 function timeAgo(dateStr) {
   if (!dateStr) return "";

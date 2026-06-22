@@ -53,7 +53,7 @@ const MyRepositories = () => {
       try {
         const token = localStorage.getItem("token");
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        const response = await fetch(`http://localhost:3000/repo/user/${userId}`, { headers });
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/repo/user/${userId}`, { headers });
         const data = await response.json();
         const repos = data.repositories || [];
         setRepositories(repos);

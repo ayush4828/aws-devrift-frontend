@@ -38,7 +38,7 @@ const Profile = () => {
     const fetchUserDetails = async () => {
       if (targetUserId) {
         try {
-          const response = await axios.get(`http://localhost:3000/userprofile/${targetUserId}`);
+          const response = await axios.get(`${import.meta.env.VITE_API_URL}/userprofile/${targetUserId}`);
           setUserDetails(response.data);
           setEditName(response.data.username);
         } catch (err) {
@@ -49,7 +49,7 @@ const Profile = () => {
     const fetchUserRepositories = async () => {
       if (targetUserId) {
         try {
-          const response = await fetch(`http://localhost:3000/repo/user/${targetUserId}`, {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/repo/user/${targetUserId}`, {
             headers: {
               "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
@@ -131,7 +131,7 @@ const Profile = () => {
       return;
     }
     try {
-      const response = await axios.put(`http://localhost:3000/updateprofile/${currentUserId}`, {
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/updateprofile/${currentUserId}`, {
         username: editName.trim()
       }, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -145,7 +145,7 @@ const Profile = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      await axios.delete(`http://localhost:3000/deleteprofile/${currentUserId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/deleteprofile/${currentUserId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
       handleLogout();
@@ -167,7 +167,7 @@ const Profile = () => {
     }
     try {
       const endpoint = isFollowing ? 'unfollow' : 'follow';
-      await axios.post(`http://localhost:3000/${endpoint}`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/${endpoint}`, {
         followerId: currentUserId,
         targetUserId: targetUserId
       }, {
