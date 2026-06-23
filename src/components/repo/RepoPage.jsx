@@ -613,24 +613,68 @@ const RepoPage = () => {
               </aside>
               
               <section className="flex-grow glass-panel rounded-xl flex flex-col border border-outline-variant/30 overflow-hidden min-h-[400px]">
-                <div className="p-xl flex flex-col items-center justify-center h-full text-center">
-                  <i className="fa-solid fa-laptop-code text-5xl text-on-surface-variant opacity-50 mb-4"></i>
-                  <h3 className="font-headline-md text-on-surface mb-2">Select a file to view its code</h3>
-                  <p className="text-body-sm text-on-surface-variant max-w-md">
-                    Use the file explorer on the left to browse the latest source code from your repository.
-                  </p>
-                  
-                  <div className="mt-xl grid grid-cols-2 gap-md w-full max-w-md">
-                    <div className="bg-surface-container p-md rounded-lg border border-outline-variant/20 text-left">
-                      <p className="text-[10px] font-label-caps text-on-surface-variant uppercase mb-1">Total Commits</p>
-                      <h4 className="text-xl font-bold text-primary">{commitsSorted.length}</h4>
-                    </div>
-                    <div className="bg-surface-container p-md rounded-lg border border-outline-variant/20 text-left">
-                      <p className="text-[10px] font-label-caps text-on-surface-variant uppercase mb-1">Total Files</p>
-                      <h4 className="text-xl font-bold text-secondary">{latestFiles.length}</h4>
+                {latestFiles.length === 0 ? (
+                  <div className="p-xl flex flex-col h-full items-start justify-center text-left">
+                    <h3 className="font-headline-md text-on-surface mb-md flex items-center gap-2">
+                      <i className="fa-solid fa-rocket text-primary"></i> Quick Setup
+                    </h3>
+                    <p className="text-body-sm text-on-surface-variant mb-lg">
+                      This repository is completely empty! Get started by pushing your code using the DevRift CLI.
+                    </p>
+                    
+                    <div className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl overflow-hidden font-label-code text-[13px] text-on-surface-variant shadow-lg">
+                      <div className="bg-surface-container-high px-4 py-2 border-b border-outline-variant/30 flex items-center gap-2">
+                        <i className="fa-brands fa-npm text-error"></i>
+                        <span className="text-on-surface font-bold text-[12px] uppercase">1. Install CLI Globally</span>
+                      </div>
+                      <div className="p-4 bg-black/40 text-primary-container relative group">
+                        <code>npm install -g devrift</code>
+                        <button onClick={() => { navigator.clipboard.writeText("npm install -g devrift"); toast.success("Copied!"); }} className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:text-white"><i className="fa-regular fa-copy"></i></button>
+                      </div>
+
+                      <div className="bg-surface-container-high px-4 py-2 border-y border-outline-variant/30 flex items-center gap-2">
+                        <i className="fa-solid fa-key text-secondary"></i>
+                        <span className="text-on-surface font-bold text-[12px] uppercase">2. Authenticate</span>
+                      </div>
+                      <div className="p-4 bg-black/40 text-primary-container relative group">
+                        <code>devrift login --email your@email.com --password yourpassword</code>
+                        <button onClick={() => { navigator.clipboard.writeText("devrift login --email your@email.com --password yourpassword"); toast.success("Copied!"); }} className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:text-white"><i className="fa-regular fa-copy"></i></button>
+                      </div>
+
+                      <div className="bg-surface-container-high px-4 py-2 border-y border-outline-variant/30 flex items-center gap-2">
+                        <i className="fa-solid fa-code-commit text-tertiary"></i>
+                        <span className="text-on-surface font-bold text-[12px] uppercase">3. Link & Push (in your project folder)</span>
+                      </div>
+                      <div className="p-4 bg-black/40 text-primary-container relative group">
+                        <pre className="m-0 leading-relaxed">
+{`devrift init ${id}
+devrift add .
+devrift commit "Initial commit"
+devrift push`}</pre>
+                        <button onClick={() => { navigator.clipboard.writeText(`devrift init ${id}\ndevrift add .\ndevrift commit "Initial commit"\ndevrift push`); toast.success("Copied!"); }} className="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:text-white"><i className="fa-regular fa-copy"></i></button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="p-xl flex flex-col items-center justify-center h-full text-center">
+                    <i className="fa-solid fa-laptop-code text-5xl text-on-surface-variant opacity-50 mb-4"></i>
+                    <h3 className="font-headline-md text-on-surface mb-2">Select a file to view its code</h3>
+                    <p className="text-body-sm text-on-surface-variant max-w-md">
+                      Use the file explorer on the left to browse the latest source code from your repository.
+                    </p>
+                    
+                    <div className="mt-xl grid grid-cols-2 gap-md w-full max-w-md">
+                      <div className="bg-surface-container p-md rounded-lg border border-outline-variant/20 text-left">
+                        <p className="text-[10px] font-label-caps text-on-surface-variant uppercase mb-1">Total Commits</p>
+                        <h4 className="text-xl font-bold text-primary">{commitsSorted.length}</h4>
+                      </div>
+                      <div className="bg-surface-container p-md rounded-lg border border-outline-variant/20 text-left">
+                        <p className="text-[10px] font-label-caps text-on-surface-variant uppercase mb-1">Total Files</p>
+                        <h4 className="text-xl font-bold text-secondary">{latestFiles.length}</h4>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </section>
             </>
           )}
